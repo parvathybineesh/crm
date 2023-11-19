@@ -1,0 +1,46 @@
+from django.db import models
+
+# Create your models here.
+
+class Employees(models.Model):
+    name=models.CharField(max_length=100)
+    department=models.CharField(max_length=100)
+    salary=models.PositiveIntegerField()
+    email=models.EmailField(unique=True)
+    age=models.PositiveIntegerField()
+    contact=models.CharField(null=True,max_length=100)
+
+OBJECT RELEATIONAL MAPPER
+-------------------------
+orm query for creating a new object
+>Employees.objects.create(name="hari",department="hr",salary=50000,email="hari@gmail.com",age=30,contact="test")
+
+orm query for fetching all record
+>qs=Employees.objects.all()
+
+orm query for fetching a specific employee details
+>qs=Employees.objects.get(id=1)
+
+orm query for filtering employee records
+>qs=Employees.objects.filter(department="hr")
+__gte >=
+__lte <=
+__lt <
+__gt >
+orm query for excluding object
+>qs=Employees.objects.exclude(department="hr")
+
+orm query for update
+>Employees.objects.filter(id=2).update(contact="newcontact",age=32)
+
+orm query for delete
+>Employees.objects.filter(id=1).delete()
+
+orm query for sort
+>qs=Employees.objects.all().order_by("salary")
+ascending order
+qs=Employees.objects.all().order_by("-salary")
+descending order
+
+
+
